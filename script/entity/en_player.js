@@ -38,6 +38,7 @@
 			hitDelay: 0,
 			buys: false,
 			onStand: false,
+			selectMode: false,
 
 			lag: 0,
 			hitLag: 0,
@@ -53,6 +54,7 @@
 			if (this.hitLag > 0) this.hitLag --;
 
 			this.buys = false;
+			this.selectMode = false;
 
 			if (self.module('module_realisticPhysics').z > Z_SAFE_ZONE) {
 				health.hitResistance = true;
@@ -136,7 +138,34 @@
 		.whenKeyStopToBePressed(Cassava.KEYCODE.c, function() {
 			this.module().interacts = false;
 		})
-
+		.whenHitsEntities(['entity_caddy'], function() {
+			this.module().select = true;
+		})
+		.whenKeyStartToBePressed(Cassava.KEYCODE[1], function(screen, game) {
+			if (this.module().select)
+				if (game.state.ammo.leek > 0) 
+					game.state.weapon = 'leek';
+		})
+		.whenKeyStartToBePressed(Cassava.KEYCODE[2], function(screen, game) {
+			if (this.module().select)
+				if (game.state.ammo.tomato > 0)
+					game.state.weapon = 'tomato';
+		})
+		.whenKeyStartToBePressed(Cassava.KEYCODE[3], function(screen, game) {
+			if (this.module().select)
+				if (game.state.ammo.carrot > 0) 
+					game.state.weapon = 'carrot';
+		})
+		.whenKeyStartToBePressed(Cassava.KEYCODE[4], function(screen, game) {
+			if (this.module().select)
+				if (game.state.ammo.baguette > 0) 
+					game.state.weapon = 'baguette';
+		})
+		.whenKeyStartToBePressed(Cassava.KEYCODE[5], function(screen, game) {
+			if (this.module().select)
+				if (game.state.ammo.ham > 0) 
+					game.state.weapon = 'ham';
+		})
 
 	function useWeapon(data, user, screen, game) {
 		var currentWeapon = game.state.weapon;

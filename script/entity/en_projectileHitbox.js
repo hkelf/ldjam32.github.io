@@ -49,5 +49,5 @@
 			this.x = args.x;
 			this.y = args.y;
 		})
-		.whenHitsEntities(['entity_player', 'entity_enemy1', 'entity_enemy2'], applyDmg)
+		.whenHitsEntities(['entity_player', 'entity_enemy1', 'entity_enemy2', 'entity_enemy3', 'entity_boss1'], applyDmg)
 })();
