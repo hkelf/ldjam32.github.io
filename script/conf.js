@@ -31,3 +31,6 @@ var INITIAL_SCREEN = 'screen_game';
 var STATE = {};
 var SPD_X = 0.75;
 var SPD_Y = 0.5;
+var Y_LIMIT = HEIGHT / 2;
+var X_LIMIT = WIDTH - 64;
+var LEVEL_WIDTH = SPD_X * 3600;

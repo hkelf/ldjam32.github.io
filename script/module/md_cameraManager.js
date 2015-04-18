@@ -15,12 +15,16 @@
 
 (function() {
 
-	game.Screen.define('screen_game')
-		.entities([
-			{ type: 'entity_player' }
-		])
-		.postEventModules([
-			'module_cameraManager'
-		]);
+	game.Module.define('module_cameraManager')
+		.onUpdate(function(e, screen, game) {
+			var player = screen.getEntity('player'),
+				camera = game.camera;
+
+			if (player) {
+				if (player.x2 > camera.x + X_LIMIT && camera.x2 <= LEVEL_WIDTH) {
+					camera.x = player.x2 - X_LIMIT;
+				}
+			}
+		})
 
 })()

@@ -22,23 +22,28 @@
 			height: 32
 		})
 		.onCreate(function() {
+			this.id = 'player';
+
+			//TMP
 			this.x = 32;
 			this.y = HEIGHT - 64;
 		})
 		.whenKeyIsPressed(Cassava.KEYCODE.up_arrow, function() {
 			this.y -= SPD_Y;
-			if (this.y < HEIGHT * 1 / 3) this.y = HEIGHT * 1 / 3;
+			if (this.y < Y_LIMIT) this.y = Y_LIMIT;
 		})
 		.whenKeyIsPressed(Cassava.KEYCODE.down_arrow, function() {
 			this.y += SPD_Y;
 			if (this.y2 >= HEIGHT) this.y = HEIGHT - 32;
 		})
-		.whenKeyIsPressed(Cassava.KEYCODE.left_arrow, function() {
+		.whenKeyIsPressed(Cassava.KEYCODE.left_arrow, function(s, game) {
+			var camera = game.camera;
+
 			this.x -= SPD_X;
-			if (this.x < 0) this.x = 0;
+			if (this.x < camera.x) this.x = camera.x;
 		})
 		.whenKeyIsPressed(Cassava.KEYCODE.right_arrow, function() {
 			this.x += SPD_X;
-			if (this.x2 >= WIDTH) this.x = WIDTH - 32;
+			if (this.x2 >= LEVEL_WIDTH) this.x = LEVEL_WIDTH - 32;
 		})
 })()
