@@ -32,7 +32,9 @@
 			var camera = game.camera;
 
 			if (this.projection > 0) {
-				self.x += this.spdX;
+				if (this.z > 0) {
+					self.x += this.spdX;
+				}
 				this.projection --;
 
 				if (this.spdX > 0) this.facingLeft = true;
@@ -44,7 +46,7 @@
 			}
 
 			if (self.x < camera.x) self.x = camera.x;
-			if (self.x2 >= camera.x2) self.x = camera.x2 - 32;
+			if (self.x2 >= camera.x2) self.x = camera.x2 - self.width;
 
 			this.spdZ += this.accZ;
 			this.accZ = 0;

@@ -26,7 +26,7 @@
 
 			//TMP
 			this.x = args && args.x || 128;
-			this.y = args && args.x || HEIGHT - 64;
+			this.y = args && args.y || HEIGHT - 64;
 		})
 		.whenHitsEntities(['entity_player'], function(player, s, game) {
 			if (player.module('module_realisticPhysics').isJumping) return;

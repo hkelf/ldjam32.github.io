@@ -21,6 +21,7 @@ var SCALE = 2;
 var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug1616', src: './asset/img/debug1616.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug1616g', src: './asset/img/debug1616g.png'},
+    {type: Cassava.Assets.IMAGE, name: 'debug1616y', src: './asset/img/debug1616y.png'},
     {type: Cassava.Assets.IMAGE, name: 'debugTradeZone', src: './asset/img/debugTradeZone.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232g', src: './asset/img/debug3232g.png'},
@@ -38,10 +39,10 @@ var INITIAL_SCREEN = 'screen_level1';
 var STATE = {
 	money: 0,
 	score: 0,
-    weapon: 'leek',
+    weapon: 'tomato',
     ammo: {
         leek: 50,
-        tomatoes: 0,
+        tomato: 50,
         carrots: 0,
         fish: 0,
         ham: 0,
@@ -51,13 +52,16 @@ var STATE = {
 
 var FOOD = [
     'leek',
-    'tomatoes',
-    'carrots',
+    'tomato',
+    'carrot',
     'fish',
     'grap',
     'ham',
     'baguette',
 ];
+
+var PROJECTILES_HEIGHT = 20;
+var PROJECTILES_SPDX = 10;
 
 var FOOD_WEAPON = {
     leek: {
@@ -83,7 +87,24 @@ var FOOD_WEAPON = {
             lag: 25,
             wpndmg: 25,
         }
-    }
+    },
+    tomato: {
+        comboMax: 1,
+        combo: [
+            {
+                dmg: 2,
+                action: 'throw1',
+                lag: 20,
+                wpndmg: 5
+            }
+        ],
+        air: {
+            dmg: 2,
+            action: 'throw2',
+            lag: 30,
+            wpndmg: 5,
+        }
+    },
 }
 
 var DROP_MIN = 1;

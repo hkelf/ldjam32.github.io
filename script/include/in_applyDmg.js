@@ -18,8 +18,15 @@ var applyDmg = function(target, screen, game) {
 		physics = target.module('module_realisticPhysics'),
 		health = target.module('module_health');
 
-	if (health.hitResistance) return;
+	if (health.hitResistance && self.type === 'hit') return;
+	if (health.hitResistance && self.type === 'projectile') {
+		if (Math.abs(physics.z - this.module('module_realisticPhysics') > 15)) return;
+	}
 
+	if (self.launcher.id === 'player') {
+		game.state.ammo[game.state.weapon] -= self.weaponDmg;
+	}
+	
 	if (target.id !== self.launcher.id) {
 		health.incomingDmg = self.dmg || 1;
 		if (self.projection && physics.projection <= 0) {
@@ -27,9 +34,8 @@ var applyDmg = function(target, screen, game) {
 			physics.spdX = PROJECTION_SPDX * ((this.xCenter < target.xCenter) ? 1 : -1);
 			physics.accZ = PROJECTION_ACCZ;
 		}
+		this.free();
 	}
 
-	if (self.launcher.id === 'player') {
-		game.state.ammo[game.state.weapon] -= self.weaponDmg;
-	}
+
 }

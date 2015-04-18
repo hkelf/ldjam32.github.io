@@ -109,5 +109,56 @@ var HIT = {
 			physics.z = 0;
 			screen.game.state.ammo['leek'] -= weaponDmg;
 		}
-	})()
+	})(),
+
+	//MIDDLE RANGE THROWING
+	throw1: (function() {
+		var params = {};
+
+		return function(launcher, screen, dmg, weaponDmg) {
+			var physics = launcher.module('module_realisticPhysics'),
+				facingLeft = physics.facingLeft;
+
+			params.x = launcher.xCenter - 8;
+			params.y = launcher.yCenter - 8;
+			params.z = physics.z;
+			params.left = facingLeft;
+			params.dmg = dmg;
+			params.type = 'projectile';
+			params.launcher = launcher;
+			params.projection = false;
+
+			if (launcher.id === 'player') {
+				screen.game.state.ammo['tomato'] -= weaponDmg;
+			}
+
+			screen.addEntity('entity_projectileHitbox', params);
+		}
+	})(),
+
+	//MIDDLE-LONG RANGE THROWING WITH PROJECTION
+	throw2: (function() {
+		var params = {};
+
+		return function(launcher, screen, dmg, weaponDmg) {
+			var physics = launcher.module('module_realisticPhysics'),
+				facingLeft = physics.facingLeft;
+
+			params.x = launcher.xCenter - 8;
+			params.y = launcher.yCenter - 8;
+			params.z = physics.z;
+			params.left = facingLeft;
+			params.dmg = dmg;
+			params.type = 'projectile';
+			params.launcher = launcher;
+			params.projection = true;
+
+			if (launcher.id === 'player') {
+				screen.game.state.ammo['tomato'] -= weaponDmg;
+			}
+
+			screen.addEntity('entity_projectileHitbox', params);
+		}
+	})(),
+
 }

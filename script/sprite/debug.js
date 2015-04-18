@@ -21,6 +21,9 @@
 	game.Sprite.define('sprite_debug1616g')
 		.asset('debug1616g');
 
+	game.Sprite.define('sprite_debug1616y')
+		.asset('debug1616y');
+
 	game.Sprite.define('sprite_debug3232')
 		.asset('debug3232');
 
