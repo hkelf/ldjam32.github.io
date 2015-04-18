@@ -16,7 +16,7 @@
 (function() {
 
 	game.Entity.define('entity_player')
-		.sprite('sprite_debug3232')
+		.sprite('sprite_debug3232g')
 		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
 			width: 32,
 			height: 32

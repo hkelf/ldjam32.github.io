@@ -21,6 +21,7 @@ var SCALE = 2;
 var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug1616', src: './asset/img/debug1616.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
+    {type: Cassava.Assets.IMAGE, name: 'debug3232g', src: './asset/img/debug3232g.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug6464', src: './asset/img/debug6464.png'},
     {type: Cassava.Assets.IMAGE, name: 'ground', src: './asset/img/ground.png'},
     {type: Cassava.Assets.IMAGE, name: 'background', src: './asset/img/background.png'},
@@ -37,7 +38,6 @@ var X_LIMIT = WIDTH - 64;
 var LEVEL_WIDTH = 1350;
 var TILE_DIMENSIONS = 150;
 
-var SPD_X = 3;
-//var SPD_X = 1;
+var SPD_X = 1;
 var SPD_Y = 0.75;
 var GRAVITY_Z = 0.23;

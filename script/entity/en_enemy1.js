@@ -15,19 +15,26 @@
 
 (function() {
 
-	var level = [
-		2,2,2,2,2,2,2,2,2,
-		1,1,1,1,1,1,1,1,1
-	];
+	game.Entity.define('entity_enemy1')
+		.sprite('sprite_debug3232')
+		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
+			width: 32,
+			height: 32
+		})
 
-	game.Screen.define('screen_level1')
-		.entities([
-			{ type: 'entity_player' },
-			{ type: 'entity_enemy1' }
-		])
-		.grid('grid', level, LEVEL_WIDTH / TILE_DIMENSIONS)
-		.postEventModules([
-			'module_cameraManager'
-		]);
+		.data({
+			health: 3
+		})
+		.onUpdate(function() {
+			
+		})
 
-})()
+		.onCreate(function() {
+			this.z = 2;
+
+			//TMP
+			this.x = WIDTH - 96;
+			this.y = HEIGHT - 64;
+		})
+		.module('module_realisticPhysics');
+})();
