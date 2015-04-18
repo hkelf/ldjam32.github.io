@@ -23,7 +23,8 @@
 	game.Screen.define('screen_level1')
 		.entities([
 			{ type: 'entity_player' },
-			{ type: 'entity_enemy1' }
+			{ type: 'entity_caddy' },
+//			{ type: 'entity_enemy1' }
 		])
 		.grid('grid', level, LEVEL_WIDTH / TILE_DIMENSIONS)
 		.postEventModules([

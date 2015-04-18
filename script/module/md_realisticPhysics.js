@@ -28,7 +28,9 @@
 
 			facingLeft: true
 		})
-		.onUpdate(function(self) {
+		.onUpdate(function(self, s, game) {
+			var camera = game.camera;
+
 			if (this.projection > 0) {
 				self.x += this.spdX;
 				this.projection --;
@@ -40,6 +42,9 @@
 				this.projection = 0;
 				this.spdX = 0;
 			}
+
+			if (self.x < camera.x) self.x = camera.x;
+			if (self.x2 >= LEVEL_WIDTH) self.x = LEVEL_WIDTH - 32;
 
 			this.spdZ += this.accZ;
 			this.accZ = 0;

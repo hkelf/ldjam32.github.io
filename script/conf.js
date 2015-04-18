@@ -23,6 +23,7 @@ var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232g', src: './asset/img/debug3232g.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232y', src: './asset/img/debug3232y.png'},
+    {type: Cassava.Assets.IMAGE, name: 'debug3232b', src: './asset/img/debug3232b.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug6464', src: './asset/img/debug6464.png'},
     {type: Cassava.Assets.IMAGE, name: 'ground', src: './asset/img/ground.png'},
     {type: Cassava.Assets.IMAGE, name: 'background', src: './asset/img/background.png'},
@@ -41,6 +42,7 @@ var TILE_DIMENSIONS = 150;
 
 var SPD_X = 1;
 var SPD_Y = 0.75;
+var CADDY_SPD = 2;
 var GRAVITY_Z = 0.3;
 var JUMP = 5;
 var PROJECTION_TIME = 30;
@@ -48,3 +50,4 @@ var PROJECTION_SPDX = 2;
 var PROJECTION_ACCZ = 3;
 
 var ENEMY_1_ATTACK_RADIUS = 48;
+var CADDY_MOVE_RADIUS = 24;

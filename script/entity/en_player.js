@@ -73,8 +73,10 @@
 		})
 		.whenKeyStartToBePressed(Cassava.KEYCODE.space, function() {
 			if (this.module('module_realisticPhysics').projection > 0) return;
-			
+
 			var physics = this.module('module_realisticPhysics');
+
+			this.module().interacts = false;
 
 			if (!physics.isJumping) {
 				physics.accZ = JUMP;
@@ -84,9 +86,19 @@
 			if (this.module('module_realisticPhysics').projection > 0) return;
 
 			var data = this.module();
+			
+			this.module().interacts = false;
 			if (data.hitDelay <= 0) {
 				data.hitDelay = 20;
 				hit1(this, screen, 1);
 			}
+		})
+		.whenKeyStartToBePressed(Cassava.KEYCODE.c, function() {
+			if (!this.module('module_realisticPhysics').isJumping) {
+				this.module().interacts = true;
+			}
+		})
+		.whenKeyStopToBePressed(Cassava.KEYCODE.c, function() {
+			this.module().interacts = false;
 		})
 })();
