@@ -15,9 +15,9 @@
 
 
 // Init stuff
-var WIDTH = 800;
-var HEIGHT = 600;
-var SCALE = 1;
+var WIDTH = 400;
+var HEIGHT = 300;
+var SCALE = 2;
 var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug1616', src: './asset/img/debug1616.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
@@ -25,7 +25,9 @@ var ASSETS = [
     //{type: Cassava.Assets.AUDIO, name: 'trololoMusic', src: './Assets/Sound/trololo.mp3'}
 ];
 var BACKGROUND = '#333';
-var INITIAL_SCREEN = 'screen_demo';
+var INITIAL_SCREEN = 'screen_game';
 
 // Game stuff
 var STATE = {};
+var SPD_X = 0.75;
+var SPD_Y = 0.5;

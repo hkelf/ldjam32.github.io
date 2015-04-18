@@ -15,14 +15,9 @@
 
 (function() {
 
-	game.initialState(STATE)
-        .assets(ASSETS)
-        .background(BACKGROUND)
-        .startAtScreen(INITIAL_SCREEN);
+	game.Screen.define('screen_game')
+		.entities([
+			{ type: 'entity_player' }
+		]);
 
-/*    game.Audio
-        .addChannel('fx')
-        .addChannel('music');
-*/
-
-})();
+})()
