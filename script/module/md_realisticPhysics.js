@@ -20,6 +20,7 @@
 			z: 0,
 			spdZ: 0,
 			accZ: 0,
+			gvtZ: GRAVITY_Z,
 
 			spdX: 0,
 
@@ -59,7 +60,7 @@
 				this.spdZ = 0;
 			} else {
 				this.isJumping = true;
-				this.spdZ -=  GRAVITY_Z;
+				this.spdZ -=  this.gvtZ;
 			}
 
 			self.spriteDeltaY = -this.z;

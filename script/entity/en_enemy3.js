@@ -15,7 +15,7 @@
 
 (function() {
 
-	game.Entity.define('entity_enemy2')
+	game.Entity.define('entity_enemy3')
 		.sprite('sprite_debug3232')
 		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
 			width: 32,
@@ -24,7 +24,7 @@
 
 		.onCreate(function(args) {
 			this.z = 2;
-			this.module('module_health').health = 3;
+			this.module('module_health').health = 5;
 
 			//TMP
 			this.x = WIDTH - 96;
@@ -34,32 +34,32 @@
 			dropMoney(screen, this.xCenter, this.yCenter, ~~(DROP_MIN * game.state.level + ((DROP_MAX-DROP_MIN) * game.state.level * Math.random())));
 		})
 
-		.module('module_ia_enemy2')
+		.module('module_ia_enemy3')
 		.module('module_realisticPhysics')
 		.module('module_health');
 
-	game.defineStateMachineModule('module_ia_enemy2', {
+	game.defineStateMachineModule('module_ia_enemy3', {
 	    initial: 'idle',
 	    states: {
 	        idle: {
-	            ttl: 60,
+	            ttl: 120,
 	            action: function (ia, self) {
 	            	var screen = self.screen,
-	            		caddy = screen.getEntity('caddy'),
+	            		player = screen.getEntity('player'),
 	            		disX;
 
-            		if (caddy) {
-		            	disX = distX(self, caddy);
+            		if (player) {
+		            	disX = distX(self, player);
 
 		            	if (
                         	(disX < 0 && disX > -ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
-                        	(self.y <= caddy.y2 && self.y2 >= caddy.y2 || self.y2 >= caddy.y && self.y <= caddy.y) &&
-                        	(caddy.xCenter <= self.xCenter && self.module('module_realisticPhysics').facingLeft || 
-                        		caddy.xCenter >= self.xCenter && !self.module('module_realisticPhysics').facingLeft)
+                        	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) &&
+                        	(player.xCenter <= self.xCenter && self.module('module_realisticPhysics').facingLeft || 
+                        		player.xCenter >= self.xCenter && !self.module('module_realisticPhysics').facingLeft)
                 		) {
 		            		ia.nextState = 'attack';
 		            	} else {
-		            		ia.nextState = 'moveToCaddy';
+		            		ia.nextState = 'moveToHero';
 		            	}
             		}
 	            },
@@ -67,24 +67,24 @@
 	                idle: 1
 	            }
 	        },
-	        moveToCaddy: {
-	            ttl: 180,
+	        moveToHero: {
+	            ttl: 120,
 	            action: function (ia, self) {
 	            	var screen = self.screen,
-	            		caddy = screen.getEntity('caddy'),
+	            		player = screen.getEntity('player'),
                         disX,
                         disY,
                         dist;
 
-            		if (caddy) {
-            			lookAt(self, caddy);
-                        disX = distX(caddy, self);
-                        disY = distY(caddy, self);
+            		if (player) {
+            			lookAt(self, player);
+                        disX = distX(player, self);
+                        disY = distY(player, self);
                         dist = Math.sqrt(disX * disX + disY * disY);
 
                         if (!(
                         	(disX < 0 && disX > -ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
-                        	(self.y <= caddy.y2 && self.y2 >= caddy.y2 || self.y2 >= caddy.y && self.y <= caddy.y) 
+                        	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) 
                 		)) {
 		            		self.x += ENEMY_1_SPD_COEF * SPD_X * disX / dist;
 	                    	self.y += ENEMY_1_SPD_COEF * SPD_Y * disY / dist;
@@ -99,11 +99,11 @@
 	            ttl: 1,
 	            action: function (ia, self) {
 	            	var screen = self.screen,
-	            		caddy = screen.getEntity('caddy');
+	            		player = screen.getEntity('player');
 
-            		if (caddy) {
-            			lookAt(self, caddy);
-            			HIT.hit1(self, screen, 1);
+            		if (player) {
+            			lookAt(self, player);
+            			HIT.hit4(self, screen, 2);
 	                }
 	            },
 	            next: {

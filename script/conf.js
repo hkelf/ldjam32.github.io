@@ -39,7 +39,7 @@ var INITIAL_SCREEN = 'screen_level1';
 var STATE = {
 	money: 0,
 	score: 0,
-    weapon: 'ham',
+    weapon: 'tomato',
     ammo: {
         leek: 50,
         tomato: 50,
@@ -92,15 +92,17 @@ var FOOD_WEAPON = {
             {
                 dmg: 2,
                 action: 'throw1',
+                hitLag: 30,
                 lag: 20,
-                wpndmg: 5
+                wpndmg: 15
             }
         ],
         air: {
             dmg: 2,
             action: 'throw2',
-            lag: 30,
-            wpndmg: 5,
+            hitLag: 30,
+            lag: 60,
+            wpndmg: 15,
         }
     },
     carrot: {
@@ -182,6 +184,8 @@ var FOOD_WEAPON = {
 
 var DROP_MIN = 1;
 var DROP_MAX = 3;
+
+var DROP_BOSS_COEF = 4;
 
 var Y_LIMIT = HEIGHT / 2;
 var X_LIMIT = WIDTH - 128;

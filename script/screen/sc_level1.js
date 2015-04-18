@@ -24,8 +24,10 @@
 		.entities([
 			{ type: 'entity_player' },
 			{ type: 'entity_caddy' },
-			{ type: 'entity_enemy1' },
-			{ type: 'entity_enemy2' },
+//			{ type: 'entity_enemy1' },
+//			{ type: 'entity_enemy2' },
+//			{ type: 'entity_enemy3' },
+			{ type: 'entity_boss1' },
 			{ type: 'entity_tradeZone' },
 		])
 		.grid('grid', level, LEVEL_WIDTH / TILE_DIMENSIONS)

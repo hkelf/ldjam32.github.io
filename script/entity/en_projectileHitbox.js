@@ -45,8 +45,9 @@
 			physics.z = args.z + PROJECTILES_HEIGHT;
 			physics.spdX = PROJECTILES_SPDX * (args.left ? -1 : 1);
 			physics.projection = 60;
+			physics.gvtZ = 0.15;
 			this.x = args.x;
 			this.y = args.y;
 		})
-		.whenHitsEntities(['entity_player', 'entity_enemy1'], applyDmg)
+		.whenHitsEntities(['entity_player', 'entity_enemy1', 'entity_enemy2'], applyDmg)
 })();
