@@ -24,12 +24,15 @@
 		.onCreate(function() {
 			this.id = 'player';
 			this.z = 2;
+			this.module('module_health').health = 5;
+
 
 			//TMP
 			this.x = 32;
 			this.y = HEIGHT - 64;
 		})
 		.module('module_realisticPhysics')
+		.module('module_health')
 
 		.data({
 			hitDelay: 0

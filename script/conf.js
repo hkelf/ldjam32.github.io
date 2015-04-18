@@ -41,4 +41,7 @@ var TILE_DIMENSIONS = 150;
 
 var SPD_X = 1;
 var SPD_Y = 0.75;
-var GRAVITY_Z = 0.23;
+var GRAVITY_Z = 0.3;
+
+
+var ENEMY_1_ATTACK_RADIUS = 48;

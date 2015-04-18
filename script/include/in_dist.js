@@ -13,10 +13,17 @@
  *	  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
-var applyDmg = function(target) {
-	var self = this.module();
+var dist = function(from, to) {
+	var disX = distX(from, to),
+		disY = distY(from, to);
 
-	if (target.id !== self.launcher.id) {
-		target.module('module_health').incomingDmg = self.dmg || 1;
-	}
+    return Math.sqrt(disX * disX + disY * disY);
+}
+
+var distX = function(from, to) {
+	return from.xCenter - to.xCenter;
+}
+
+var distY = function(from, to) {
+	return from.yCenter - to.yCenter;
 }

@@ -13,10 +13,12 @@
  *	  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
-var applyDmg = function(target) {
-	var self = this.module();
+var lookAt = function(caller, target) {
+	var physics = caller.module('module_realisticPhysics');
 
-	if (target.id !== self.launcher.id) {
-		target.module('module_health').incomingDmg = self.dmg || 1;
+	if (target.xCenter < caller.xCenter) {
+		physics.facingLeft = true;
+	} else {
+		physics.facingLeft = false;
 	}
 }

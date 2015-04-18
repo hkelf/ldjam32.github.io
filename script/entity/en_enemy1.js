@@ -30,6 +30,82 @@
 			this.x = WIDTH - 96;
 			this.y = HEIGHT - 64;
 		})
+		.module('module_ia_enemy1')
 		.module('module_realisticPhysics')
 		.module('module_health');
+
+	game.defineStateMachineModule('module_ia_enemy1', {
+	    initial: 'idle',
+	    states: {
+	        idle: {
+	            ttl: 90,
+	            action: function (ia, self) {
+	            	var screen = self.screen,
+	            		player = screen.getEntity('player'),
+	            		disX;
+
+            		if (player) {
+		            	lookAt(self, player);
+		            	disX = distX(self, player);
+
+		            	if (
+                        	(disX < 0 && disX > ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
+                        	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) 
+                		) {
+		            		ia.nextState = 'attack';
+		            	} else {
+		            		ia.nextState = 'moveToHero';
+		            	}
+            		}
+	            },
+	            next: {
+	                idle: 1
+	            }
+	        },
+	        moveToHero: {
+	            ttl: 30,
+	            action: function (ia, self) {
+	            	var screen = self.screen,
+	            		player = screen.getEntity('player'),
+                        disX,
+                        disY,
+                        dist;
+
+            		if (player) {
+            			lookAt(self, player);
+                        disX = distX(player, self);
+                        disY = distY(player, self);
+                        dist = Math.sqrt(disX * disX + disY * disY);
+
+                        if (!(
+                        	(disX < 0 && disX > ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
+                        	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) 
+                		)) {
+		            		self.x += SPD_X * disX / dist;
+	                    	self.y += SPD_Y * disY / dist;
+		            	}
+	                }
+	            },
+	            next: {
+	                idle: 1
+	            }
+	        },
+	        attack: {
+	            ttl: 1,
+	            action: function (ia, self) {
+	            	var screen = self.screen,
+	            		player = screen.getEntity('player');
+
+            		if (player) {
+            			lookAt(self, player);
+            			hit(self, screen, 1);
+	                }
+	            },
+	            next: {
+	                idle: 1
+	            }
+	        },
+	    }
+	});
+
 })();
