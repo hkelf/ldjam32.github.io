@@ -67,9 +67,11 @@
 		.whenKeyIsPressed(Cassava.KEYCODE.right_arrow, function() {
 			if (this.module('module_realisticPhysics').projection > 0) return;
 			
+			var camera = game.camera;
+			
 			this.x += SPD_X;
 			this.module('module_realisticPhysics').facingLeft = false;
-			if (this.x2 >= LEVEL_WIDTH) this.x = LEVEL_WIDTH - 32;
+			if (this.x2 >= camera.x2) this.x = camera.x2 - 32;
 		})
 		.whenKeyStartToBePressed(Cassava.KEYCODE.space, function() {
 			if (this.module('module_realisticPhysics').projection > 0) return;

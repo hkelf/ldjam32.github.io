@@ -30,6 +30,10 @@
 			this.x = WIDTH - 96;
 			this.y = HEIGHT - 64;
 		})
+		.onFree(function(screen) {
+			dropMoney(screen, this.xCenter, this.yCenter, 3);
+		})
+
 		.module('module_ia_enemy1')
 		.module('module_realisticPhysics')
 		.module('module_health');

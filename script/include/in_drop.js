@@ -13,27 +13,26 @@
  *	  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
-(function() {
+var dropMoney = (function() {
+	var parameters = {};
 
-	game.Sprite.define('sprite_debug1616')
-		.asset('debug1616');
+	var random = Math.random;
+	var PI = Math.PI;
+	var cos = Math.cos;
+	var sin = Math.sin;
 
-	game.Sprite.define('sprite_debug1616g')
-		.asset('debug1616g');
+	return function(screen, originX, originY, total) {
+		var r,
+			a;
 
-	game.Sprite.define('sprite_debug3232')
-		.asset('debug3232');
+		for (; total > 0; --total) {
+			r = random() * 16;
+			a = random() * 2 * PI;
 
-	game.Sprite.define('sprite_debug3232g')
-		.asset('debug3232g');
+			parameters.x = originX + r * cos(a);
+			parameters.y = originY + r * sin(a);
 
-	game.Sprite.define('sprite_debug3232y')
-		.asset('debug3232y');
-
-	game.Sprite.define('sprite_debug3232b')
-		.asset('debug3232b');
-
-	game.Sprite.define('sprite_debug6464')
-		.asset('debug6464');
-
+			screen.addEntity('entity_bill', parameters);
+		}
+	}
 })()

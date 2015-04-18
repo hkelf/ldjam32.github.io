@@ -15,25 +15,23 @@
 
 (function() {
 
-	game.Sprite.define('sprite_debug1616')
-		.asset('debug1616');
+	game.Entity.define('entity_bill')
+		.sprite('sprite_debug1616g')
+		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
+			width: 16,
+			height: 16
+		})
+		.onCreate(function(args) {
+			this.z = 2;
 
-	game.Sprite.define('sprite_debug1616g')
-		.asset('debug1616g');
+			//TMP
+			this.x = args && args.x || 128;
+			this.y = args && args.x || HEIGHT - 64;
+		})
+		.whenHitsEntities(['entity_player'], function(player, s, game) {
+			if (player.module('module_realisticPhysics').isJumping) return;
 
-	game.Sprite.define('sprite_debug3232')
-		.asset('debug3232');
-
-	game.Sprite.define('sprite_debug3232g')
-		.asset('debug3232g');
-
-	game.Sprite.define('sprite_debug3232y')
-		.asset('debug3232y');
-
-	game.Sprite.define('sprite_debug3232b')
-		.asset('debug3232b');
-
-	game.Sprite.define('sprite_debug6464')
-		.asset('debug6464');
-
-})()
+			this.free();
+			game.state.money += 1;
+		})
+})();

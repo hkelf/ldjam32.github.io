@@ -20,6 +20,7 @@ var HEIGHT = 300;
 var SCALE = 2;
 var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug1616', src: './asset/img/debug1616.png'},
+    {type: Cassava.Assets.IMAGE, name: 'debug1616g', src: './asset/img/debug1616g.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232g', src: './asset/img/debug3232g.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232y', src: './asset/img/debug3232y.png'},
@@ -33,10 +34,13 @@ var BACKGROUND = '#333';
 var INITIAL_SCREEN = 'screen_level1';
 
 // Game stuff
-var STATE = {};
+var STATE = {
+	money: 0,
+	score: 0
+};
 
 var Y_LIMIT = HEIGHT / 2;
-var X_LIMIT = WIDTH - 64;
+var X_LIMIT = WIDTH - 128;
 var LEVEL_WIDTH = 1350;
 var TILE_DIMENSIONS = 150;
 

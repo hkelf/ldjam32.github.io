@@ -17,12 +17,12 @@
 
 	game.Module.define('module_cameraManager')
 		.onUpdate(function(e, screen, game) {
-			var player = screen.getEntity('player'),
+			var caddy = screen.getEntity('caddy'),
 				camera = game.camera;
 
-			if (player) {
-				if (player.x2 > camera.x + X_LIMIT) {
-					camera.x = player.x2 - X_LIMIT;
+			if (caddy) {
+				if (caddy.x2 > camera.x + X_LIMIT) {
+					camera.x = caddy.x2 - X_LIMIT;
 				}
 				if (camera.x2 >= LEVEL_WIDTH) {
 					camera.x = LEVEL_WIDTH - WIDTH;

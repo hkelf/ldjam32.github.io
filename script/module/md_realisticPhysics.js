@@ -44,7 +44,7 @@
 			}
 
 			if (self.x < camera.x) self.x = camera.x;
-			if (self.x2 >= LEVEL_WIDTH) self.x = LEVEL_WIDTH - 32;
+			if (self.x2 >= camera.x2) self.x = camera.x2 - 32;
 
 			this.spdZ += this.accZ;
 			this.accZ = 0;
