@@ -15,19 +15,12 @@
 
 (function() {
 
-	game.Module.define('module_cameraManager')
-		.onUpdate(function(e, screen, game) {
-			var player = screen.getEntity('player'),
-				camera = game.camera;
-
-			if (player) {
-				if (player.x2 > camera.x + X_LIMIT) {
-					camera.x = player.x2 - X_LIMIT;
-				}
-				if (camera.x2 >= LEVEL_WIDTH) {
-					camera.x = LEVEL_WIDTH - WIDTH;
-				}
-			}
-		})
+	game.Sprite.define('sprite_background')
+		.asset('background')
+		.dimensions(TILE_DIMENSIONS,TILE_DIMENSIONS)
+		.sequences({
+			ground: {from: 0, to: 0},
+			background: {from: 1, to: 1}
+		});
 
 })()

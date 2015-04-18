@@ -22,15 +22,19 @@ var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug1616', src: './asset/img/debug1616.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug6464', src: './asset/img/debug6464.png'},
+    {type: Cassava.Assets.IMAGE, name: 'ground', src: './asset/img/ground.png'},
+    {type: Cassava.Assets.IMAGE, name: 'background', src: './asset/img/background.png'},
     //{type: Cassava.Assets.AUDIO, name: 'trololoMusic', src: './Assets/Sound/trololo.mp3'}
 ];
 var BACKGROUND = '#333';
-var INITIAL_SCREEN = 'screen_game';
+var INITIAL_SCREEN = 'screen_level1';
 
 // Game stuff
 var STATE = {};
-var SPD_X = 0.75;
+var SPD_X = 3;
+//var SPD_X = 0.75;
 var SPD_Y = 0.5;
 var Y_LIMIT = HEIGHT / 2;
 var X_LIMIT = WIDTH - 64;
-var LEVEL_WIDTH = SPD_X * 3600;
+var LEVEL_WIDTH = 1350;
+var TILE_DIMENSIONS = 150;

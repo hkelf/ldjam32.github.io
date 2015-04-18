@@ -15,19 +15,18 @@
 
 (function() {
 
-	game.Module.define('module_cameraManager')
-		.onUpdate(function(e, screen, game) {
-			var player = screen.getEntity('player'),
-				camera = game.camera;
+	var level = [
+		2,2,2,2,2,2,2,2,2,
+		1,1,1,1,1,1,1,1,1
+	];
 
-			if (player) {
-				if (player.x2 > camera.x + X_LIMIT) {
-					camera.x = player.x2 - X_LIMIT;
-				}
-				if (camera.x2 >= LEVEL_WIDTH) {
-					camera.x = LEVEL_WIDTH - WIDTH;
-				}
-			}
-		})
+	game.Screen.define('screen_level1')
+		.entities([
+			{ type: 'entity_player' }
+		])
+		.grid('grid', level, LEVEL_WIDTH / TILE_DIMENSIONS)
+		.postEventModules([
+			'module_cameraManager'
+		]);
 
 })()

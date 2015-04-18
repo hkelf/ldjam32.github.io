@@ -15,12 +15,11 @@
 
 (function() {
 
-	game.Screen.define('screen_game')
-		.entities([
-			{ type: 'entity_player' }
-		])
-		.postEventModules([
-			'module_cameraManager'
-		]);
+	game.Grid.define('grid')
+		.sprite('sprite_background')
+		.tileTypes({
+			1: {sequence: 'ground'},
+			2: {sequence: 'background'},
+		})
 
 })()
