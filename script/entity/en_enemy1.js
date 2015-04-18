@@ -49,12 +49,13 @@
 	            		disX;
 
             		if (player) {
-		            	lookAt(self, player);
 		            	disX = distX(self, player);
 
 		            	if (
                         	(disX < 0 && disX > -ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
-                        	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) 
+                        	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) &&
+                        	(player.xCenter <= self.xCenter && self.module('module_realisticPhysics').facingLeft || 
+                        		player.xCenter >= self.xCenter && !self.module('module_realisticPhysics').facingLeft)
                 		) {
 		            		ia.nextState = 'attack';
 		            	} else {

@@ -19,16 +19,23 @@ var applyDmg = function(target, screen, game) {
 		health = target.module('module_health');
 
 	if (health.hitResistance && self.type === 'hit') return;
-	if (health.hitResistance && self.type === 'projectile') {
+	if (self.type === 'projectile') {
 		if (Math.abs(physics.z - this.module('module_realisticPhysics') > 15)) return;
 	}
 
-	if (self.launcher.id === 'player') {
-		game.state.ammo[game.state.weapon] -= self.weaponDmg;
-	}
-	
 	if (target.id !== self.launcher.id) {
-		health.incomingDmg = self.dmg || 1;
+		if (self.launcher.id === 'player') {
+			game.state.ammo[game.state.weapon] -= self.weaponDmg;
+		}
+		if (self.stab) {
+			if (self.launcher.xCenter < target.xCenter && !physics.facingLeft) {
+				health.incomingDmg = (self.dmg || 0) + CARROT_CRITICAL_BONUS;
+			} else if (self.launcher.xCenter >= target.xCenter && physics.facingLeft) {
+				health.incomingDmg = (self.dmg || 0) + CARROT_CRITICAL_BONUS;
+			}
+		} else {
+			health.incomingDmg = self.dmg || 0;
+		} 
 		if (self.projection && physics.projection <= 0) {
 			physics.projection = PROJECTION_TIME;
 			physics.spdX = PROJECTION_SPDX * ((this.xCenter < target.xCenter) ? 1 : -1);

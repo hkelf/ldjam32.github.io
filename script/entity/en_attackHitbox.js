@@ -25,7 +25,8 @@
 		.data({
 			dmg: 1,
 			weaponDmg: 0,
-			type: null
+			type: null,
+			stab: false
 		})
 		.onUpdate(function(self) {
 			self.free();
@@ -40,6 +41,7 @@
 			data.weaponDmg = args.weaponDmg || 0;
 			data.launcher = args.launcher;
 			data.projection = !!args.projection;
+			data.stab = !!args.stab;
 
 			//TMP
 			this.x = args.x;

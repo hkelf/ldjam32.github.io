@@ -32,6 +32,25 @@ var HIT = {
 		}
 	})(),
 
+	// LOW RANGE HIT BUT CRITICAL IF BACKSTAB
+	stab: (function() {
+		var params = {};
+
+		return function(launcher, screen, dmg, weaponDmg) {
+			var facingLeft = launcher.module('module_realisticPhysics').facingLeft;
+
+			params.x = (facingLeft) ? launcher.x - launcher.width / 2 : launcher.xCenter;
+			params.y = launcher.y;
+			params.dmg = dmg;
+			params.type = 'hit';
+			params.stab = true;
+			params.weaponDmg = weaponDmg || 0;
+			params.launcher = launcher;
+
+			screen.addEntity('entity_attackHitbox', params);
+		}
+	})(),
+
 	// LOW RANGE HIT WITH PROJECTION
 	hit2: (function() {
 		var params = {};
@@ -48,6 +67,19 @@ var HIT = {
 			params.projection = true;
 
 			screen.addEntity('entity_attackHitbox', params);
+		}
+	})(),
+
+	airCarrot: (function() {
+		var params = {};
+
+		return function(launcher, screen, dmg, weaponDmg) {
+			var physics = launcher.module('module_realisticPhysics'),
+				facingLeft = physics.facingLeft;
+
+			launcher.x += facingLeft ? -CARROT_WARP_DIST : CARROT_WARP_DIST;
+			if (physics.spdZ < 0) physics.spdZ = 0; 
+			screen.game.state.ammo['carrot'] -= weaponDmg;
 		}
 	})(),
 

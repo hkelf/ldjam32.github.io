@@ -158,7 +158,6 @@
 		HIT[comboStade.action](user, screen, comboStade.dmg, comboStade.wpndmg);		
 		data.lag = comboStade.lag;
 		data.hitLag = comboStade.hitLag || 0;
-		data.comboStade ++;
 	}
 
 })();

@@ -39,11 +39,11 @@ var INITIAL_SCREEN = 'screen_level1';
 var STATE = {
 	money: 0,
 	score: 0,
-    weapon: 'tomato',
+    weapon: 'carrot',
     ammo: {
         leek: 50,
         tomato: 50,
-        carrots: 0,
+        carrot: 50,
         fish: 0,
         ham: 0,
     },
@@ -105,6 +105,44 @@ var FOOD_WEAPON = {
             wpndmg: 5,
         }
     },
+    carrot: {
+        comboMax: 4,
+        combo: [
+            {
+                dmg: 0,
+                action: 'stab',
+                hitLag: 5,
+                lag: 20,
+                wpndmg: 1
+            },
+            {
+                dmg: 0,
+                action: 'stab',
+                hitLag: 5,
+                lag: 20,
+                wpndmg: 1
+            },
+            {
+                dmg: 1,
+                action: 'stab',
+                hitLag: 5,
+                lag: 20,
+                wpndmg: 3
+            },
+            {
+                dmg: 2,
+                action: 'stab',
+                lag: 1,
+                wpndmg: 5
+            }
+        ],
+        air: {
+            dmg: 0,
+            action: 'airCarrot',
+            lag: 0,
+            wpndmg: 6,
+        }
+    }
 }
 
 var DROP_MIN = 1;
@@ -124,6 +162,9 @@ var PROJECTION_TIME = 30;
 var PROJECTION_SPDX = 2;
 var PROJECTION_ACCZ = 3;
 var Z_SAFE_ZONE = 20;
+
+var CARROT_WARP_DIST = 64;
+var CARROT_CRITICAL_BONUS = 3;
 
 var ENEMY_1_ATTACK_RADIUS = 48;
 var CADDY_MOVE_RADIUS = 24;
