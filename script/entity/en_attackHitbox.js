@@ -23,7 +23,9 @@
 		})
 
 		.data({
-			dmg: 1
+			dmg: 1,
+			weaponDmg: 0,
+			type: null
 		})
 		.onUpdate(function(self) {
 			self.free();
@@ -33,7 +35,9 @@
 			var data = this.module();
 
 			this.z = 2;
+			data.type = args.type || 'hit';
 			data.dmg = args.dmg;
+			data.weaponDmg = args.weaponDmg || 0;
 			data.launcher = args.launcher;
 			data.projection = !!args.projection;
 

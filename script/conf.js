@@ -38,6 +38,7 @@ var INITIAL_SCREEN = 'screen_level1';
 var STATE = {
 	money: 0,
 	score: 0,
+    weapon: 'leek',
     ammo: {
         leek: 50,
         tomatoes: 0,
@@ -49,14 +50,41 @@ var STATE = {
 };
 
 var FOOD = [
-    "leek",
-    "tomatoes",
-    "carrots",
-    "fish",
-    "grap",
-    "ham",
-    "baguette",
+    'leek',
+    'tomatoes',
+    'carrots',
+    'fish',
+    'grap',
+    'ham',
+    'baguette',
 ];
+
+var FOOD_WEAPON = {
+    leek: {
+        comboMax: 2,
+        combo: [
+            {
+                dmg: 1,
+                action: 'hit3',
+                hitLag: 10,
+                lag: 20,
+                wpndmg: 3
+            },
+            {
+                dmg: 1,
+                action: 'hit4',
+                lag: 30,
+                wpndmg: 5
+            }
+        ],
+        air: {
+            dmg: 2,
+            action: 'airLeek',
+            lag: 25,
+            wpndmg: 25,
+        }
+    }
+}
 
 var DROP_MIN = 1;
 var DROP_MAX = 3;
@@ -74,6 +102,7 @@ var JUMP = 5;
 var PROJECTION_TIME = 30;
 var PROJECTION_SPDX = 2;
 var PROJECTION_ACCZ = 3;
+var Z_SAFE_ZONE = 20;
 
 var ENEMY_1_ATTACK_RADIUS = 48;
 var CADDY_MOVE_RADIUS = 24;

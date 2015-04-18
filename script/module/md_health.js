@@ -19,7 +19,8 @@
 		.data({
 			health: 0,
 			incomingDmg: 0,
-			invincibility: 0
+			invincibility: 0,
+			hitResistance: false
 		})
 		.onUpdate(function(self, screen, game) {
 			if (this.invincibility <= 0) {

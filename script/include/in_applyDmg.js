@@ -13,16 +13,23 @@
  *	  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
-var applyDmg = function(target) {
+var applyDmg = function(target, screen, game) {
 	var self = this.module(),
-		physics = target.module('module_realisticPhysics');
+		physics = target.module('module_realisticPhysics'),
+		health = target.module('module_health');
+
+	if (health.hitResistance) return;
 
 	if (target.id !== self.launcher.id) {
-		target.module('module_health').incomingDmg = self.dmg || 1;
+		health.incomingDmg = self.dmg || 1;
 		if (self.projection && physics.projection <= 0) {
 			physics.projection = PROJECTION_TIME;
 			physics.spdX = PROJECTION_SPDX * ((this.xCenter < target.xCenter) ? 1 : -1);
 			physics.accZ = PROJECTION_ACCZ;
 		}
+	}
+
+	if (self.launcher.id === 'player') {
+		game.state.ammo[game.state.weapon] -= self.weaponDmg;
 	}
 }

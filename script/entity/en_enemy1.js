@@ -102,7 +102,7 @@
 
             		if (player) {
             			lookAt(self, player);
-            			hit2(self, screen, 1);
+            			HIT.hit2(self, screen, 1);
 	                }
 	            },
 	            next: {
