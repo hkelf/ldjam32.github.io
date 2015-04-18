@@ -42,6 +42,9 @@ var TILE_DIMENSIONS = 150;
 var SPD_X = 1;
 var SPD_Y = 0.75;
 var GRAVITY_Z = 0.3;
-
+var JUMP = 5;
+var PROJECTION_TIME = 30;
+var PROJECTION_SPDX = 2;
+var PROJECTION_ACCZ = 3;
 
 var ENEMY_1_ATTACK_RADIUS = 48;

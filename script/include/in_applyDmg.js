@@ -14,9 +14,15 @@
  */
 
 var applyDmg = function(target) {
-	var self = this.module();
+	var self = this.module(),
+		physics = target.module('module_realisticPhysics');
 
 	if (target.id !== self.launcher.id) {
 		target.module('module_health').incomingDmg = self.dmg || 1;
+		if (self.projection && physics.projection <= 0) {
+			physics.projection = PROJECTION_TIME;
+			physics.spdX = PROJECTION_SPDX * ((this.xCenter < target.xCenter) ? 1 : -1);
+			physics.accZ = PROJECTION_ACCZ;
+		}
 	}
 }

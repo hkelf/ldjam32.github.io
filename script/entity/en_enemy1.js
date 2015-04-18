@@ -49,7 +49,7 @@
 		            	disX = distX(self, player);
 
 		            	if (
-                        	(disX < 0 && disX > ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
+                        	(disX < 0 && disX > -ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
                         	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) 
                 		) {
 		            		ia.nextState = 'attack';
@@ -78,7 +78,7 @@
                         dist = Math.sqrt(disX * disX + disY * disY);
 
                         if (!(
-                        	(disX < 0 && disX > ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
+                        	(disX < 0 && disX > -ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
                         	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) 
                 		)) {
 		            		self.x += SPD_X * disX / dist;
@@ -98,7 +98,7 @@
 
             		if (player) {
             			lookAt(self, player);
-            			hit(self, screen, 1);
+            			hit2(self, screen, 1);
 	                }
 	            },
 	            next: {

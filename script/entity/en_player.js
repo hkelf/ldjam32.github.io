@@ -44,14 +44,20 @@
 		})
 
 		.whenKeyIsPressed(Cassava.KEYCODE.up_arrow, function() {
+			if (this.module('module_realisticPhysics').projection > 0) return;
+			
 			this.y -= SPD_Y;
 			if (this.y < Y_LIMIT) this.y = Y_LIMIT;
 		})
 		.whenKeyIsPressed(Cassava.KEYCODE.down_arrow, function() {
+			if (this.module('module_realisticPhysics').projection > 0) return;
+			
 			this.y += SPD_Y;
 			if (this.y2 >= HEIGHT) this.y = HEIGHT - 32;
 		})
 		.whenKeyIsPressed(Cassava.KEYCODE.left_arrow, function(s, game) {
+			if (this.module('module_realisticPhysics').projection > 0) return;
+			
 			var camera = game.camera;
 
 			this.x -= SPD_X;
@@ -59,22 +65,28 @@
 			if (this.x < camera.x) this.x = camera.x;
 		})
 		.whenKeyIsPressed(Cassava.KEYCODE.right_arrow, function() {
+			if (this.module('module_realisticPhysics').projection > 0) return;
+			
 			this.x += SPD_X;
 			this.module('module_realisticPhysics').facingLeft = false;
 			if (this.x2 >= LEVEL_WIDTH) this.x = LEVEL_WIDTH - 32;
 		})
 		.whenKeyStartToBePressed(Cassava.KEYCODE.space, function() {
+			if (this.module('module_realisticPhysics').projection > 0) return;
+			
 			var physics = this.module('module_realisticPhysics');
 
 			if (!physics.isJumping) {
-				physics.accZ = 5;
+				physics.accZ = JUMP;
 			}
 		})
 		.whenKeyStartToBePressed(Cassava.KEYCODE.x, function(screen) {
+			if (this.module('module_realisticPhysics').projection > 0) return;
+
 			var data = this.module();
 			if (data.hitDelay <= 0) {
 				data.hitDelay = 20;
-				hit(this, screen, 1);
+				hit1(this, screen, 1);
 			}
 		})
 })();

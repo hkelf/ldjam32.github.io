@@ -35,6 +35,7 @@
 			this.z = 2;
 			data.dmg = args.dmg;
 			data.launcher = args.launcher;
+			data.projection = !!args.projection;
 
 			//TMP
 			this.x = args.x;
