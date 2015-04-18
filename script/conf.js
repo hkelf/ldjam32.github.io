@@ -39,12 +39,12 @@ var INITIAL_SCREEN = 'screen_level1';
 var STATE = {
 	money: 0,
 	score: 0,
-    weapon: 'ham',
+    weapon: 'baguette',
     ammo: {
         leek: 50,
         tomato: 50,
         carrot: 50,
-        fish: 0,
+        baguette: 50,
         ham: 50,
     },
     level: 1
@@ -54,8 +54,6 @@ var FOOD = [
     'leek',
     'tomato',
     'carrot',
-    'fish',
-    'grap',
     'ham',
     'baguette',
 ];
@@ -153,6 +151,31 @@ var FOOD_WEAPON = {
                 wpndmg: 10
             }
         ]
+    },
+    baguette: {
+        comboMax: 2,
+        combo: [
+            {
+                dmg: 1,
+                action: 'hit5',
+                hitLag: 20,
+                lag: 40,
+                wpndmg: 4
+            },
+            {
+                dmg: 1,
+                action: 'hit6',
+                lag: 50,
+                wpndmg: 8
+            },
+        ],
+        air: {
+            dmg: 2,
+            action: 'airBaguette',
+            hitLag: 5,
+            lag: 60,
+            wpndmg: 20
+        }
     }
 }
 

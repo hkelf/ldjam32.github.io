@@ -151,6 +151,87 @@ var HIT = {
 		}
 	})(),
 
+	//LONG RANGE HIT
+	hit5: (function() {
+		var params = {};
+
+		return function(launcher, screen, dmg, weaponDmg) {
+			var facingLeft = launcher.module('module_realisticPhysics').facingLeft;
+
+			params.x = (facingLeft) ? launcher.x - launcher.width / 2 : launcher.xCenter;
+			params.y = launcher.y;
+			params.dmg = dmg;
+			params.type = 'hit';
+			params.weaponDmg = weaponDmg || 0;
+			params.launcher = launcher;
+			params.projection = false;
+			screen.addEntity('entity_attackHitbox', params);
+			
+			params.x = (facingLeft) ? launcher.x - 3 * launcher.width / 2 : launcher.xCenter + launcher.width;
+			screen.addEntity('entity_attackHitbox', params);
+		}
+	})(),
+
+	//LONG RANGE HIT WITH PROJECTION
+	hit6: (function() {
+		var params = {};
+
+		return function(launcher, screen, dmg, weaponDmg) {
+			var facingLeft = launcher.module('module_realisticPhysics').facingLeft;
+
+			params.x = (facingLeft) ? launcher.x - launcher.width / 2 : launcher.xCenter;
+			params.y = launcher.y;
+			params.dmg = dmg;
+			params.type = 'hit';
+			params.weaponDmg = weaponDmg || 0;
+			params.launcher = launcher;
+			params.projection = true;
+			screen.addEntity('entity_attackHitbox', params);
+			
+			params.x = (facingLeft) ? launcher.x - 3 * launcher.width / 2 : launcher.xCenter + launcher.width;
+			screen.addEntity('entity_attackHitbox', params);
+		}
+	})(),
+
+	airBaguette: (function() {
+		var params = {};
+
+		return function(launcher, screen, dmg, weaponDmg) {
+			var physics = launcher.module('module_realisticPhysics'),
+				facingLeft = physics.facingLeft;
+
+			params.x = launcher.x;
+			params.y = launcher.y;
+			params.dmg = dmg;
+			params.type = 'hit';
+			params.launcher = launcher;
+			params.projection = true;
+			screen.addEntity('entity_attackHitbox', params);
+			
+			params.x = launcher.x2;
+			screen.addEntity('entity_attackHitbox', params);
+
+			params.x = launcher.x - launcher.width;
+			screen.addEntity('entity_attackHitbox', params);
+			
+			params.x = launcher.x;
+
+			params.y = launcher.y - launcher.height;
+			screen.addEntity('entity_attackHitbox', params);
+			
+			params.y = launcher.y2;
+			screen.addEntity('entity_attackHitbox', params);
+
+
+
+			params.y = launcher.y2;
+			screen.addEntity('entity_attackHitbox', params);
+
+			physics.z = 0;
+			screen.game.state.ammo['leek'] -= weaponDmg;
+		}
+	})(),
+
 	//MIDDLE RANGE THROWING
 	throw1: (function() {
 		var params = {};
