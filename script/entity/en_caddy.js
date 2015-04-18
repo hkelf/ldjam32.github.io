@@ -45,4 +45,5 @@
                 }
 			}
 		})
+		.module('module_realisticPhysics');
 })();

@@ -43,6 +43,25 @@ var applyDmg = function(target, screen, game) {
 		}
 		this.free();
 	}
+}
 
+var applyPenalty = function (caddy, screen, game) {
+	var i = 0;
+	var ammo = game.state.ammo;
+	var data = this.module();
+	var physics = caddy.module('module_realisticPhysics');
 
+	if (data.launcher.id === 'player') return;
+
+	for (; i<FOOD.length; ++i) {
+		if (FOOD[i] === game.state.weapon) continue;
+		ammo[FOOD[i]] -= ~~(Math.random() * data.dmg * 10);
+		if (ammo[FOOD[i]] < 0) ammo[FOOD[i]] = 0;
+	}
+
+	if (data.projection && physics.projection <= 0) {
+		physics.projection = PROJECTION_TIME;
+		physics.spdX = PROJECTION_SPDX * ((this.xCenter < caddy.xCenter) ? 1 : -1);
+		physics.accZ = PROJECTION_ACCZ;
+	}
 }

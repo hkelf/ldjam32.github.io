@@ -15,7 +15,7 @@
 
 (function() {
 
-	game.Entity.define('entity_enemy1')
+	game.Entity.define('entity_enemy2')
 		.sprite('sprite_debug3232')
 		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
 			width: 32,
@@ -34,32 +34,32 @@
 			dropMoney(screen, this.xCenter, this.yCenter, ~~(DROP_MIN * game.state.level + ((DROP_MAX-DROP_MIN) * game.state.level * Math.random())));
 		})
 
-		.module('module_ia_enemy1')
+		.module('module_ia_enemy2')
 		.module('module_realisticPhysics')
 		.module('module_health');
 
-	game.defineStateMachineModule('module_ia_enemy1', {
+	game.defineStateMachineModule('module_ia_enemy2', {
 	    initial: 'idle',
 	    states: {
 	        idle: {
 	            ttl: 60,
 	            action: function (ia, self) {
 	            	var screen = self.screen,
-	            		player = screen.getEntity('player'),
+	            		caddy = screen.getEntity('caddy'),
 	            		disX;
 
-            		if (player) {
-		            	disX = distX(self, player);
+            		if (caddy) {
+		            	disX = distX(self, caddy);
 
 		            	if (
                         	(disX < 0 && disX > -ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
-                        	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) &&
-                        	(player.xCenter <= self.xCenter && self.module('module_realisticPhysics').facingLeft || 
-                        		player.xCenter >= self.xCenter && !self.module('module_realisticPhysics').facingLeft)
+                        	(self.y <= caddy.y2 && self.y2 >= caddy.y2 || self.y2 >= caddy.y && self.y <= caddy.y) &&
+                        	(caddy.xCenter <= self.xCenter && self.module('module_realisticPhysics').facingLeft || 
+                        		caddy.xCenter >= self.xCenter && !self.module('module_realisticPhysics').facingLeft)
                 		) {
 		            		ia.nextState = 'attack';
 		            	} else {
-		            		ia.nextState = 'moveToHero';
+		            		ia.nextState = 'moveToCaddy';
 		            	}
             		}
 	            },
@@ -67,24 +67,24 @@
 	                idle: 1
 	            }
 	        },
-	        moveToHero: {
+	        moveToCaddy: {
 	            ttl: 180,
 	            action: function (ia, self) {
 	            	var screen = self.screen,
-	            		player = screen.getEntity('player'),
+	            		caddy = screen.getEntity('caddy'),
                         disX,
                         disY,
                         dist;
 
-            		if (player) {
-            			lookAt(self, player);
-                        disX = distX(player, self);
-                        disY = distY(player, self);
+            		if (caddy) {
+            			lookAt(self, caddy);
+                        disX = distX(caddy, self);
+                        disY = distY(caddy, self);
                         dist = Math.sqrt(disX * disX + disY * disY);
 
                         if (!(
                         	(disX < 0 && disX > -ENEMY_1_ATTACK_RADIUS || disX > 0 && disX < ENEMY_1_ATTACK_RADIUS) && 
-                        	(self.y <= player.y2 && self.y2 >= player.y2 || self.y2 >= player.y && self.y <= player.y) 
+                        	(self.y <= caddy.y2 && self.y2 >= caddy.y2 || self.y2 >= caddy.y && self.y <= caddy.y) 
                 		)) {
 		            		self.x += ENEMY_1_SPD_COEF * SPD_X * disX / dist;
 	                    	self.y += ENEMY_1_SPD_COEF * SPD_Y * disY / dist;
@@ -99,10 +99,10 @@
 	            ttl: 1,
 	            action: function (ia, self) {
 	            	var screen = self.screen,
-	            		player = screen.getEntity('player');
+	            		caddy = screen.getEntity('caddy');
 
-            		if (player) {
-            			lookAt(self, player);
+            		if (caddy) {
+            			lookAt(self, caddy);
             			HIT.hit2(self, screen, 1);
 	                }
 	            },

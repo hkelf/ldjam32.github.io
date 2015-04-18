@@ -39,7 +39,7 @@ var INITIAL_SCREEN = 'screen_level1';
 var STATE = {
 	money: 0,
 	score: 0,
-    weapon: 'baguette',
+    weapon: 'ham',
     ammo: {
         leek: 50,
         tomato: 50,
@@ -147,7 +147,8 @@ var FOOD_WEAPON = {
             {
                 dmg: 2,
                 action: 'zone1',
-                lag: 60,
+                hitLag: 60,
+                lag: 45,
                 wpndmg: 10
             }
         ]
@@ -201,4 +202,7 @@ var CARROT_WARP_DIST = 64;
 var CARROT_CRITICAL_BONUS = 3;
 
 var ENEMY_1_ATTACK_RADIUS = 48;
+var ENEMY_1_SPD_COEF = 0.75;
+
 var CADDY_MOVE_RADIUS = 24;
+var CADDY_PENALTY_COEF = 10;

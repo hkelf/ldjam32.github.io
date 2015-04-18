@@ -124,11 +124,14 @@
 				useWeapon(data, this, screen, game);
 			}
 		})
-		.whenKeyStartToBePressed(Cassava.KEYCODE.c, function() {
-			if (!this.module('module_realisticPhysics').isJumping) {
-				this.module().interacts = true;
-				this.module().buys = true;
-			}
+		.whenKeyStartToBePressed(Cassava.KEYCODE.c, function(screen) {
+			var caddy = screen.getEntity('caddy');
+
+			if (this.module('module_realisticPhysics').isJumping) return;
+			this.module().buys = true;
+			
+			if (caddy && caddy.module('module_realisticPhysics').projection > 0) return;
+			this.module().interacts = true;
 		})
 		.whenKeyStopToBePressed(Cassava.KEYCODE.c, function() {
 			this.module().interacts = false;

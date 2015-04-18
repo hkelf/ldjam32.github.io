@@ -88,6 +88,7 @@ var HIT = {
 
 			if (physics.spdZ > 0) physics.spdZ = 0; 
 			screen.game.state.ammo['carrot'] -= weaponDmg;
+			if (screen.game.state.ammo['carrot'] < 0) screen.game.state.ammo['carrot'] = 0;
 		}
 	})(),
 
@@ -148,6 +149,7 @@ var HIT = {
 
 			physics.z = 0;
 			screen.game.state.ammo['leek'] -= weaponDmg;
+			if (screen.game.state.ammo['leek'] < 0) screen.game.state.ammo['leek'] = 0;
 		}
 	})(),
 
@@ -228,7 +230,8 @@ var HIT = {
 			screen.addEntity('entity_attackHitbox', params);
 
 			physics.z = 0;
-			screen.game.state.ammo['leek'] -= weaponDmg;
+			screen.game.state.ammo['baguette'] -= weaponDmg;
+			if(screen.game.state.ammo['baguette'] < 0) screen.game.state.ammo['baguette'] = 0;
 		}
 	})(),
 
@@ -251,6 +254,8 @@ var HIT = {
 
 			if (launcher.id === 'player') {
 				screen.game.state.ammo['tomato'] -= weaponDmg;
+				if (screen.game.state.ammo['tomato'] < 0) screen.game.state.ammo['tomato'] = 0;
+
 			}
 
 			screen.addEntity('entity_projectileHitbox', params);
@@ -276,6 +281,7 @@ var HIT = {
 
 			if (launcher.id === 'player') {
 				screen.game.state.ammo['tomato'] -= weaponDmg;
+				if (screen.game.state.ammo['tomato'] < 0) screen.game.state.ammo['tomato'] = 0;
 			}
 
 			screen.addEntity('entity_projectileHitbox', params);
@@ -305,6 +311,7 @@ var HIT = {
 
 			if (launcher.id === 'player') {
 				screen.game.state.ammo['ham'] -= weaponDmg;
+				if (screen.game.state.ammo['ham'] < 0) screen.game.state.ammo['ham'] = 0;
 			}
 		}
 	})(),
