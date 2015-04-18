@@ -24,12 +24,18 @@
 			spdX: 0,
 
 			projection: 0,
-			isJumping: false
+			isJumping: false,
+
+			facingLeft: true
 		})
 		.onUpdate(function(self) {
 			if (this.projection > 0) {
 				self.x += this.spdX;
 				this.projection --;
+
+				if (this.spdX > 0) this.facingLeft = true;
+				else if (this.spdX < 0) this.facingLeft = false;
+
 			} else {
 				this.projection = 0;
 				this.spdX = 0;

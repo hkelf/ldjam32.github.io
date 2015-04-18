@@ -15,21 +15,30 @@
 
 (function() {
 
-	game.Entity.define('entity_enemy1')
-		.sprite('sprite_debug3232')
+	game.Entity.define('entity_attackHitbox')
+		.sprite('sprite_debug3232y')
 		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
 			width: 32,
 			height: 32
 		})
 
-		.onCreate(function() {
+		.data({
+			dmg: 1
+		})
+		.onUpdate(function(self) {
+			self.free();
+		})
+
+		.onCreate(function(args) {
+			var data = this.module();
+
 			this.z = 2;
-			this.module('module_health').health = 3;
+			data.dmg = args.dmg;
+			data.launcher = args.launcher;
 
 			//TMP
-			this.x = WIDTH - 96;
-			this.y = HEIGHT - 64;
+			this.x = args.x;
+			this.y = args.y;
 		})
-		.module('module_realisticPhysics')
-		.module('module_health');
+		.whenHitsEntities(['entity_enemy1'], applyDmg)
 })();

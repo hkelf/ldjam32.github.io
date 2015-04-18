@@ -22,6 +22,7 @@ var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug1616', src: './asset/img/debug1616.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232g', src: './asset/img/debug3232g.png'},
+    {type: Cassava.Assets.IMAGE, name: 'debug3232y', src: './asset/img/debug3232y.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug6464', src: './asset/img/debug6464.png'},
     {type: Cassava.Assets.IMAGE, name: 'ground', src: './asset/img/ground.png'},
     {type: Cassava.Assets.IMAGE, name: 'background', src: './asset/img/background.png'},

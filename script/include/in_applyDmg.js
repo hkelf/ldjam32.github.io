@@ -13,23 +13,10 @@
  *	  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
-(function() {
+var applyDmg = function(target) {
+	var self = this.module();
 
-	game.Entity.define('entity_enemy1')
-		.sprite('sprite_debug3232')
-		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
-			width: 32,
-			height: 32
-		})
-
-		.onCreate(function() {
-			this.z = 2;
-			this.module('module_health').health = 3;
-
-			//TMP
-			this.x = WIDTH - 96;
-			this.y = HEIGHT - 64;
-		})
-		.module('module_realisticPhysics')
-		.module('module_health');
-})();
+	if (target.id !== 'player' && self.launcher.id === 'player') {
+		target.module('module_health').incomingDmg = self.dmg || 1;
+	}
+}

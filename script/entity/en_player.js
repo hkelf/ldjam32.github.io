@@ -31,6 +31,15 @@
 		})
 		.module('module_realisticPhysics')
 
+		.data({
+			hitDelay: 0
+		})
+		.onUpdate(function() {
+			if (this.hitDelay > 0) {
+				this.hitDelay --;
+			}
+		})
+
 		.whenKeyIsPressed(Cassava.KEYCODE.up_arrow, function() {
 			this.y -= SPD_Y;
 			if (this.y < Y_LIMIT) this.y = Y_LIMIT;
@@ -43,13 +52,26 @@
 			var camera = game.camera;
 
 			this.x -= SPD_X;
+			this.module('module_realisticPhysics').facingLeft = true;
 			if (this.x < camera.x) this.x = camera.x;
 		})
 		.whenKeyIsPressed(Cassava.KEYCODE.right_arrow, function() {
 			this.x += SPD_X;
+			this.module('module_realisticPhysics').facingLeft = false;
 			if (this.x2 >= LEVEL_WIDTH) this.x = LEVEL_WIDTH - 32;
 		})
 		.whenKeyStartToBePressed(Cassava.KEYCODE.space, function() {
-			this.module('module_realisticPhysics').accZ = 5;
+			var physics = this.module('module_realisticPhysics');
+
+			if (!physics.isJumping) {
+				physics.accZ = 5;
+			}
+		})
+		.whenKeyStartToBePressed(Cassava.KEYCODE.x, function(screen) {
+			var data = this.module();
+			if (data.hitDelay <= 0) {
+				data.hitDelay = 20;
+				hit(this, screen, 1);
+			}
 		})
 })();

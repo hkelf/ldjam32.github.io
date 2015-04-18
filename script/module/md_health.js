@@ -15,21 +15,28 @@
 
 (function() {
 
-	game.Entity.define('entity_enemy1')
-		.sprite('sprite_debug3232')
-		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
-			width: 32,
-			height: 32
+	game.Module.define('module_health')
+		.data({
+			health: 0,
+			incomingDmg: 0,
+			invincibility: 0
+		})
+		.onUpdate(function(self, screen, game) {
+			if (this.invincibility <= 0) {
+				if (this.incomingDmg !== 0) {
+					this.health -= this.incomingDmg;
+					this.incomingDmg = 0;
+
+					this.invincibility = 5;
+
+					if (this.health <= 0) {
+						this.health = 0;
+						self.free();
+					}
+				}	
+			} else {
+				this.invincibility --;
+			}
 		})
 
-		.onCreate(function() {
-			this.z = 2;
-			this.module('module_health').health = 3;
-
-			//TMP
-			this.x = WIDTH - 96;
-			this.y = HEIGHT - 64;
-		})
-		.module('module_realisticPhysics')
-		.module('module_health');
-})();
+})()

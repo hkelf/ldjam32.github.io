@@ -13,23 +13,17 @@
  *	  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
-(function() {
+var hit = (function() {
+	var params = {};
 
-	game.Entity.define('entity_enemy1')
-		.sprite('sprite_debug3232')
-		.hitbox(Cassava.Hitbox.RECTANGLE_TYPE, {
-			width: 32,
-			height: 32
-		})
+	return function(launcher, screen, dmg) {
+		var facingLeft = launcher.module('module_realisticPhysics').facingLeft;
 
-		.onCreate(function() {
-			this.z = 2;
-			this.module('module_health').health = 3;
+		params.x = (facingLeft) ? launcher.x - launcher.width / 2 : launcher.xCenter;
+		params.y = launcher.y;
+		params.dmg = dmg;
+		params.launcher = launcher;
 
-			//TMP
-			this.x = WIDTH - 96;
-			this.y = HEIGHT - 64;
-		})
-		.module('module_realisticPhysics')
-		.module('module_health');
-})();
+		screen.addEntity('entity_attackHitbox', params);
+	}
+})()
