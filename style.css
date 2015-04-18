@@ -21,3 +21,7 @@ body {
 .footer {
 	margin-top: 60px;
 }
+
+h1 {
+	font-style: italic;
+}

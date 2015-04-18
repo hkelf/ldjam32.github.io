@@ -22,7 +22,7 @@ var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug1616', src: './asset/img/debug1616.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug1616g', src: './asset/img/debug1616g.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug1616y', src: './asset/img/debug1616y.png'},
-    {type: Cassava.Assets.IMAGE, name: 'debugTradeZone', src: './asset/img/debugTradeZone.png'},
+    {type: Cassava.Assets.IMAGE, name: 'debugTradeZone', src: './asset/img/debugTradezone.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232g', src: './asset/img/debug3232g.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232y', src: './asset/img/debug3232y.png'},
