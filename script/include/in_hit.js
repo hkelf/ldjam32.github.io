@@ -201,4 +201,31 @@ var HIT = {
 		}
 	})(),
 
+	//SHORT-RANGE ZONE WITH PROJECTION
+	zone1: (function() {
+		var params = {};
+
+		return function(launcher, screen, dmg, weaponDmg) {
+			var facingLeft = launcher.module('module_realisticPhysics').facingLeft;
+
+			params.x = (facingLeft) ? launcher.x - launcher.width : launcher.x2;
+			params.y = launcher.y;
+			params.dmg = dmg;
+			params.type = 'hit';
+			params.launcher = launcher;
+			params.projection = true;
+			screen.addEntity('entity_attackHitbox', params);
+
+			params.y = launcher.y - launcher.height;
+			screen.addEntity('entity_attackHitbox', params);
+
+			params.y = launcher.y + launcher.height;
+			screen.addEntity('entity_attackHitbox', params);
+
+			if (launcher.id === 'player') {
+				screen.game.state.ammo['ham'] -= weaponDmg;
+			}
+		}
+	})(),
+
 }

@@ -39,13 +39,13 @@ var INITIAL_SCREEN = 'screen_level1';
 var STATE = {
 	money: 0,
 	score: 0,
-    weapon: 'carrot',
+    weapon: 'ham',
     ammo: {
         leek: 50,
         tomato: 50,
         carrot: 50,
         fish: 0,
-        ham: 0,
+        ham: 50,
     },
     level: 1
 };
@@ -142,6 +142,17 @@ var FOOD_WEAPON = {
             lag: 0,
             wpndmg: 6,
         }
+    },
+    ham: {
+        comboMax: 1,
+        combo: [
+            {
+                dmg: 2,
+                action: 'zone1',
+                lag: 60,
+                wpndmg: 10
+            }
+        ]
     }
 }
 

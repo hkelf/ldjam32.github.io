@@ -95,9 +95,10 @@
 			this.module('module_realisticPhysics').facingLeft = false;
 			if (this.x2 >= camera.x2) this.x = camera.x2 - 32;
 		})
-		.whenKeyStartToBePressed(Cassava.KEYCODE.space, function() {
+		.whenKeyStartToBePressed(Cassava.KEYCODE.space, function(s, game) {
 			if (this.module('module_realisticPhysics').projection > 0) return;
 			if (this.module().lag > 0) return;
+			if (game.state.weapon === 'ham') return;
 
 			var physics = this.module('module_realisticPhysics');
 
