@@ -21,6 +21,7 @@ var SCALE = 2;
 var ASSETS = [
     {type: Cassava.Assets.IMAGE, name: 'debug1616', src: './asset/img/debug1616.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug1616g', src: './asset/img/debug1616g.png'},
+    {type: Cassava.Assets.IMAGE, name: 'debugTradeZone', src: './asset/img/debugTradeZone.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232', src: './asset/img/debug3232.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232g', src: './asset/img/debug3232g.png'},
     {type: Cassava.Assets.IMAGE, name: 'debug3232y', src: './asset/img/debug3232y.png'},
@@ -36,8 +37,29 @@ var INITIAL_SCREEN = 'screen_level1';
 // Game stuff
 var STATE = {
 	money: 0,
-	score: 0
+	score: 0,
+    ammo: {
+        leek: 50,
+        tomatoes: 0,
+        carrots: 0,
+        fish: 0,
+        ham: 0,
+    },
+    level: 1
 };
+
+var FOOD = [
+    "leek",
+    "tomatoes",
+    "carrots",
+    "fish",
+    "grap",
+    "ham",
+    "baguette",
+];
+
+var DROP_MIN = 1;
+var DROP_MAX = 3;
 
 var Y_LIMIT = HEIGHT / 2;
 var X_LIMIT = WIDTH - 128;

@@ -35,12 +35,16 @@
 		.module('module_health')
 
 		.data({
-			hitDelay: 0
+			hitDelay: 0,
+			buys: false,
+			onStand: false
 		})
 		.onUpdate(function() {
 			if (this.hitDelay > 0) {
 				this.hitDelay --;
 			}
+
+			this.buys = false;
 		})
 
 		.whenKeyIsPressed(Cassava.KEYCODE.up_arrow, function() {
@@ -98,6 +102,7 @@
 		.whenKeyStartToBePressed(Cassava.KEYCODE.c, function() {
 			if (!this.module('module_realisticPhysics').isJumping) {
 				this.module().interacts = true;
+				this.module().buys = true;
 			}
 		})
 		.whenKeyStopToBePressed(Cassava.KEYCODE.c, function() {

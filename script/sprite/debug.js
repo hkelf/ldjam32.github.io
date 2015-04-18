@@ -36,4 +36,7 @@
 	game.Sprite.define('sprite_debug6464')
 		.asset('debug6464');
 
+	game.Sprite.define('sprite_debugTradeZone')
+		.asset('debugTradeZone');
+
 })()

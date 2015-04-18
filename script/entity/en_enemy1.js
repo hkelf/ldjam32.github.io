@@ -22,7 +22,7 @@
 			height: 32
 		})
 
-		.onCreate(function() {
+		.onCreate(function(args) {
 			this.z = 2;
 			this.module('module_health').health = 3;
 
@@ -30,8 +30,8 @@
 			this.x = WIDTH - 96;
 			this.y = HEIGHT - 64;
 		})
-		.onFree(function(screen) {
-			dropMoney(screen, this.xCenter, this.yCenter, 3);
+		.onFree(function(screen, game) {
+			dropMoney(screen, this.xCenter, this.yCenter, ~~(DROP_MIN * game.state.level + ((DROP_MAX-DROP_MIN) * game.state.level * Math.random())));
 		})
 
 		.module('module_ia_enemy1')
