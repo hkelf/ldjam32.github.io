@@ -75,10 +75,18 @@ var HIT = {
 
 		return function(launcher, screen, dmg, weaponDmg) {
 			var physics = launcher.module('module_realisticPhysics'),
-				facingLeft = physics.facingLeft;
+				facingLeft = physics.facingLeft,
+				futureX,
+				camera = screen.game.camera;
 
-			launcher.x += facingLeft ? -CARROT_WARP_DIST : CARROT_WARP_DIST;
-			if (physics.spdZ < 0) physics.spdZ = 0; 
+			futureX = launcher.x + (facingLeft ? -CARROT_WARP_DIST : CARROT_WARP_DIST);
+
+			if (futureX < camera.x) futureX = camera.x;
+			if (futureX + launcher.width >= camera.x2) futureX = camera.x2 - launcher.width;
+
+			launcher.x = futureX;
+
+			if (physics.spdZ > 0) physics.spdZ = 0; 
 			screen.game.state.ammo['carrot'] -= weaponDmg;
 		}
 	})(),
