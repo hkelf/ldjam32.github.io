@@ -20,6 +20,8 @@
         .background(BACKGROUND)
         .startAtScreen(INITIAL_SCREEN);
 
+    game.Camera.ordering({2: Cassava.Camera.PLACE_BY_Y2});
+
 /*    game.Audio
         .addChannel('fx')
         .addChannel('music');

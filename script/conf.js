@@ -31,10 +31,13 @@ var INITIAL_SCREEN = 'screen_level1';
 
 // Game stuff
 var STATE = {};
-var SPD_X = 3;
-//var SPD_X = 0.75;
-var SPD_Y = 0.5;
+
 var Y_LIMIT = HEIGHT / 2;
 var X_LIMIT = WIDTH - 64;
 var LEVEL_WIDTH = 1350;
 var TILE_DIMENSIONS = 150;
+
+var SPD_X = 3;
+//var SPD_X = 1;
+var SPD_Y = 0.75;
+var GRAVITY_Z = 0.23;

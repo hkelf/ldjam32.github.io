@@ -23,11 +23,14 @@
 		})
 		.onCreate(function() {
 			this.id = 'player';
+			this.z = 2;
 
 			//TMP
 			this.x = 32;
 			this.y = HEIGHT - 64;
 		})
+		.module('module_realisticPhysics')
+
 		.whenKeyIsPressed(Cassava.KEYCODE.up_arrow, function() {
 			this.y -= SPD_Y;
 			if (this.y < Y_LIMIT) this.y = Y_LIMIT;
@@ -46,4 +49,7 @@
 			this.x += SPD_X;
 			if (this.x2 >= LEVEL_WIDTH) this.x = LEVEL_WIDTH - 32;
 		})
-})()
+		.whenKeyStartToBePressed(Cassava.KEYCODE.space, function() {
+			this.module('module_realisticPhysics').accZ = 5;
+		})
+})();
